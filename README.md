@@ -17,4 +17,4 @@ npm run build
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-# instalar npm install --save-dev babel-preset-stage-2
+## instalar npm install --save-dev babel-preset-stage-2

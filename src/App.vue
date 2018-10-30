@@ -5,6 +5,10 @@
       <app-counter></app-counter>
       <app-result></app-result>
       <app-another></app-another>
+      <app-another-counter></app-another-counter>
+      <hr/>
+      <input type="text" -model="value" @input="updateValue">
+      <p>{{ value }}</p>
     </div>
   </div>
 </template>
@@ -13,13 +17,30 @@
   import Counter from './components/Counter.vue';
   import Result from './components/Result.vue';
   import AnotherResult from './components/AnotherResult.vue';
+  import AnotherCounter from './components/AnotherCounter.vue';
 
   export default {
     name: 'app',
     components: {
       appCounter: Counter,
       appResult: Result,
-      appAnother: AnotherResult
+      appAnother: AnotherResult,
+      appAnotherCounter: AnotherCounter
+    },
+    computed: {
+      value: {
+        get() {
+          return this.$store.getters.value;
+        },
+        set(value) {
+          this.$store.dispatch('updateValue', event.target.value);
+        }
+      }
+    },
+    methods: {
+      updateValue(event) {
+        this.$store.dispatch('updateValue', event.target.value);
+      }
     },
     data() {
       return {

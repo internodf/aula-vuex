@@ -1,19 +1,19 @@
 <template>
   <div class="row">
-    <button class="btn btn-primary" @click="increment">Increment</button>
-    <button class="btn btn-primary" @click="decrement">Decrement</button>
+    <button class="btn btn-primary" @click="asyncIncrement({by: 50, duration: 500})">Increment</button>
+    <button class="btn btn-primary" @click="asyncDecrement({by: 50, duration: 500})">Decrement</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   methods : {
-    increment() {
-      this.$store.state.counter++;
-    },
-    decrement() {
-      this.$store.state.counter--;
-    }
+      ...mapActions([
+        'asyncIncrement',
+        'asyncDecrement'
+      ])
   }
 }
 </script>
